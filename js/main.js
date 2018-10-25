@@ -21,7 +21,7 @@ var cellImage = new Array(3);
 for (let row = 0; row < cellImage.length; row++) {
     cellImage[row] = new Array(6);
 }
-console.log('cg : ' + imageCollecton);
+//console.log('cg : ' + imageCollecton);
 count = 0;
 for (let row = 0; row < 3; row++) {
     for (let col = 0; col < 6; col++) {
@@ -47,9 +47,9 @@ function flipToBack() {
         }
     }
 }
-console.log('c : ' + groupImages1);
-console.log('c2 : ' + groupImages2);
-console.log('cellImage = ' + cellImage);
+//console.log('c : ' + groupImages1);
+//console.log('c2 : ' + groupImages2);
+//console.log('cellImage = ' + cellImage);
 
 twoFliped = true;
 
@@ -66,11 +66,11 @@ for (let row = 0; row < 3; row++) {
         cellImageFound[row][col] = false;
     }
 }
-for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 6; col++) {
-        console.log(cellImageFound[row][col]);
-    }
-}
+//for (let row = 0; row < 3; row++) {
+//    for (let col = 0; col < 6; col++) {
+//       console.log(cellImageFound[row][col]);
+//    }
+//}
 
 
 function d(row, col) {
@@ -105,7 +105,7 @@ function d(row, col) {
             if (!cellImageFound[row][col]) won = false;
         }
     }
-    console.log(cellImageFound);
+    //console.log(cellImageFound);
     // console.log(won);
     if (won) {
         document.getElementById('main').innerHTML = '<img src="./assest/IYE.gif">'
