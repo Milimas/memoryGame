@@ -51,7 +51,6 @@ function flipToBack() {
 //console.log('c2 : ' + groupImages2);
 //console.log('cellImage = ' + cellImage);
 
-var twoFliped = true;
 
 var currentFlipedcell = [];
 var lastFlipedcell = [];
@@ -72,6 +71,7 @@ for (let row = 0; row < 3; row++) {
 //    }
 //}
 
+var twoFliped = true;
 
 function d(row, col) {
     // console.log(twoFliped);
@@ -89,10 +89,6 @@ function d(row, col) {
     // console.log(currentFlipedcell[c2 - 2] + '' + currentFlipedcell[c2 - 1] + ' ' + lastFlipedcell[c - 2] + '' + lastFlipedcell[c - 1]);
     if (!twoFliped && cellImage[lastFlipedcell[countFliped1 - 2]][lastFlipedcell[countFliped1 - 1]] == cellImage[currentFlipedcell[countFliped2 - 2]][currentFlipedcell[countFliped2 - 1]] &&
         (lastFlipedcell[countFliped1 - 2] != currentFlipedcell[countFliped2 - 2] || lastFlipedcell[countFliped1 - 1] != currentFlipedcell[countFliped2 - 1])) {
-        // cellImageFoundrow.push(lastFlipedcell[c - 2]);
-        // cellImageFoundcol.push(lastFlipedcell[c - 1]);
-        // cellImageFoundrow.push(currentFlipedcell[c2 - 2]);
-        // cellImageFoundcol.push(currentFlipedcell[c2 - 1]);
         cellImageFound[lastFlipedcell[countFliped1 - 2]][lastFlipedcell[countFliped1 - 1]] = true;
         cellImageFound[currentFlipedcell[countFliped2 - 2]][currentFlipedcell[countFliped2 - 1]] = true;
 
@@ -112,7 +108,9 @@ function d(row, col) {
         // document.getElementById('main').innerHTML = '<div style="background-image: url(' + '\'./assest/IYE.gif\'' + ')"><h1>Congratulations</h1></div>';
         color = ["red", "blue", "yellow", "white", "green", "greenyellow", "orange", "gainsboro", "silver", "gold"];
         document.getElementById('main').style = 'height:300px;width:600px;background-image: url(\'./assest/IYE.gif\');';
-        document.getElementById('main').innerHTML = '<br><br><br><br><br><br><h1 id="congrats">Congratulations</h1>';
-        document.getElementById('congrats').style = 'text-align: center;color: ' + color[Math.floor(Math.random() * 9)] + ';'
+        document.getElementById('main').innerHTML = '<br><br><br><br><br><br><br><br><h1 id="congrats">Congratulations</h1>';
+        setInterval(() => {
+            document.getElementById('congrats').style = 'text-align: center;color: ' + color[Math.floor(Math.random() * 9)] + ';'
+        }, 250);
     }
 }
