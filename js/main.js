@@ -3,10 +3,12 @@ var randomNumber2;
 var groupImages1 = [];
 var groupImages2 = [];
 var imageCollecton = [];
+var rowsNumber = 5;
+var colsNumber = 4;
 do {
     foundIt = false;
-    randomNumber1 = Math.floor(Math.random() * Math.floor(9));
-    randomNumber2 = Math.floor(Math.random() * Math.floor(9));
+    randomNumber1 = Math.floor(Math.random() * Math.floor((rowsNumber * colsNumber) / 2));
+    randomNumber2 = Math.floor(Math.random() * Math.floor((rowsNumber * colsNumber) / 2));
     for (let imageIndex = 0; imageIndex < groupImages1.length; imageIndex++) {
         if ((randomNumber1 == groupImages1[imageIndex] || randomNumber2 == groupImages2[imageIndex]))
             foundIt = true;
@@ -15,16 +17,16 @@ do {
         groupImages1.push(randomNumber1);
         groupImages2.push(randomNumber2);
     }
-} while (groupImages1.length < 9 && groupImages2.length < 9);
+} while (groupImages1.length < (rowsNumber * colsNumber) / 2 && groupImages2.length < (rowsNumber * colsNumber) / 2);
 imageCollecton = groupImages1 + ',' + groupImages2;
-var cellImage = new Array(3);
+var cellImage = new Array(rowsNumber);
 for (let row = 0; row < cellImage.length; row++) {
-    cellImage[row] = new Array(6);
+    cellImage[row] = new Array(colsNumber);
 }
 //console.log('cg : ' + imageCollecton);
 count = 0;
-for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 6; col++) {
+for (let row = 0; row < rowsNumber; row++) {
+    for (let col = 0; col < colsNumber; col++) {
         cellImage[row][col] = imageCollecton[count];
         // document.getElementById('c' + row + '' + col).style =
         //     'background-image: url("./assest/' + cellImage[row][col] + '.png");';
@@ -38,8 +40,8 @@ for (let row = 0; row < 3; row++) {
 
 
 function flipToBack() {
-    for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 6; col++) {
+    for (let row = 0; row < rowsNumber; row++) {
+        for (let col = 0; col < colsNumber; col++) {
             if (!cellImageFound[row][col]) {
                 document.getElementById('c' + row + '' + col).style =
                     'background-image: url("./assest/b.png");';
@@ -56,12 +58,12 @@ var currentFlipedcell = [];
 var lastFlipedcell = [];
 var countFliped1 = 0;
 var countFliped2 = 0;
-var cellImageFound = Array(3);
+var cellImageFound = Array(rowsNumber);
 for (let row = 0; row < cellImageFound.length; row++) {
-    cellImageFound[row] = Array(6);
+    cellImageFound[row] = Array(colsNumber);
 }
-for (let row = 0; row < 3; row++) {
-    for (let col = 0; col < 6; col++) {
+for (let row = 0; row < rowsNumber; row++) {
+    for (let col = 0; col < colsNumber; col++) {
         cellImageFound[row][col] = false;
     }
 }
@@ -97,8 +99,8 @@ function d(row, col) {
         'background-image: url("./assest/' + cellImage[row][col] + '.png");';
     twoFliped = !twoFliped;
     won = true;
-    for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 6; col++) {
+    for (let row = 0; row < rowsNumber; row++) {
+        for (let col = 0; col < colsNumber; col++) {
             if (!cellImageFound[row][col]) won = false;
         }
     }
@@ -108,9 +110,10 @@ function d(row, col) {
         // document.getElementById('main').innerHTML = '<div style="background-image: url(' + '\'./assest/IYE.gif\'' + ')"><h1>Congratulations</h1></div>';
         color = ["red", "blue", "yellow", "white", "green", "greenyellow", "orange", "gainsboro", "silver", "gold"];
         document.getElementById('main').style = 'height:300px;width:600px;background-image: url(\'./assest/IYE.gif\');';
-        document.getElementById('main').innerHTML = '<br><br><br><br><br><br><br><br><h1 id="congrats">Congratulations</h1>';
+        document.getElementById('main').classList = 'container';
+        document.getElementById('main').innerHTML = '<br><br><br><br><br><br><br><br><h1 class="justify-content-md-center" id="congrats">Congratulations</h1>';
         setInterval(() => {
-            document.getElementById('congrats').style = 'text-align: center;color: ' + color[Math.floor(Math.random() * 9)] + ';'
+            document.getElementById('congrats').style = 'text-align: center;color: ' + color[Math.floor(Math.random() * (rowsNumber * colsNumber) / 2)] + ';'
         }, 250);
     }
 }
