@@ -51,13 +51,13 @@ function flipToBack() {
 //console.log('c2 : ' + groupImages2);
 //console.log('cellImage = ' + cellImage);
 
-twoFliped = true;
+var twoFliped = true;
 
 var currentFlipedcell = [];
 var lastFlipedcell = [];
-var c = 0;
-var c2 = 0;
-cellImageFound = Array(3);
+var countFliped1 = 0;
+var countFliped2 = 0;
+var cellImageFound = Array(3);
 for (let row = 0; row < cellImageFound.length; row++) {
     cellImageFound[row] = Array(6);
 }
@@ -76,25 +76,25 @@ for (let row = 0; row < 3; row++) {
 function d(row, col) {
     // console.log(twoFliped);
     if (twoFliped) {
-        lastFlipedcell[c] = row;
-        lastFlipedcell[c + 1] = col;
-        c += 2;
+        lastFlipedcell[countFliped1] = row;
+        lastFlipedcell[countFliped1 + 1] = col;
+        countFliped1 += 2;
         flipToBack();
     } else {
-        currentFlipedcell[c2] = row;
-        currentFlipedcell[c2 + 1] = col;
-        c2 += 2;
+        currentFlipedcell[countFliped2] = row;
+        currentFlipedcell[countFliped2 + 1] = col;
+        countFliped2 += 2;
     }
     //console.log(row + ' ' + col);
     // console.log(currentFlipedcell[c2 - 2] + '' + currentFlipedcell[c2 - 1] + ' ' + lastFlipedcell[c - 2] + '' + lastFlipedcell[c - 1]);
-    if (!twoFliped && cellImage[lastFlipedcell[c - 2]][lastFlipedcell[c - 1]] == cellImage[currentFlipedcell[c2 - 2]][currentFlipedcell[c2 - 1]] &&
-        (lastFlipedcell[c - 2] != currentFlipedcell[c2 - 2] || lastFlipedcell[c - 1] != currentFlipedcell[c2 - 1])) {
+    if (!twoFliped && cellImage[lastFlipedcell[countFliped1 - 2]][lastFlipedcell[countFliped1 - 1]] == cellImage[currentFlipedcell[countFliped2 - 2]][currentFlipedcell[countFliped2 - 1]] &&
+        (lastFlipedcell[countFliped1 - 2] != currentFlipedcell[countFliped2 - 2] || lastFlipedcell[countFliped1 - 1] != currentFlipedcell[countFliped2 - 1])) {
         // cellImageFoundrow.push(lastFlipedcell[c - 2]);
         // cellImageFoundcol.push(lastFlipedcell[c - 1]);
         // cellImageFoundrow.push(currentFlipedcell[c2 - 2]);
         // cellImageFoundcol.push(currentFlipedcell[c2 - 1]);
-        cellImageFound[lastFlipedcell[c - 2]][lastFlipedcell[c - 1]] = true;
-        cellImageFound[currentFlipedcell[c2 - 2]][currentFlipedcell[c2 - 1]] = true;
+        cellImageFound[lastFlipedcell[countFliped1 - 2]][lastFlipedcell[countFliped1 - 1]] = true;
+        cellImageFound[currentFlipedcell[countFliped2 - 2]][currentFlipedcell[countFliped2 - 1]] = true;
 
     }
     document.getElementById('c' + row + '' + col).style =
@@ -109,6 +109,10 @@ function d(row, col) {
     //console.log(cellImageFound);
     // console.log(won);
     if (won) {
-        document.getElementById('main').innerHTML = '<img src="./assest/IYE.gif">'
+        // document.getElementById('main').innerHTML = '<div style="background-image: url(' + '\'./assest/IYE.gif\'' + ')"><h1>Congratulations</h1></div>';
+        color = ["red", "blue", "yellow", "white", "green", "greenyellow", "orange", "gainsboro", "silver", "gold"];
+        document.getElementById('main').style = 'height:300px;width:600px;background-image: url(\'./assest/IYE.gif\');';
+        document.getElementById('main').innerHTML = '<br><br><br><br><br><br><h1 id="congrats">Congratulations</h1>';
+        document.getElementById('congrats').style = 'text-align: center;color: ' + color[Math.floor(Math.random() * 9)] + ';'
     }
 }
