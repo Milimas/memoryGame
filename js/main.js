@@ -87,7 +87,8 @@ function d(row, col) {
     }
     //console.log(row + ' ' + col);
     // console.log(currentFlipedcell[c2 - 2] + '' + currentFlipedcell[c2 - 1] + ' ' + lastFlipedcell[c - 2] + '' + lastFlipedcell[c - 1]);
-    if (!twoFliped && cellImage[lastFlipedcell[c - 2]][lastFlipedcell[c - 1]] == cellImage[currentFlipedcell[c2 - 2]][currentFlipedcell[c2 - 1]]) {
+    if (!twoFliped && cellImage[lastFlipedcell[c - 2]][lastFlipedcell[c - 1]] == cellImage[currentFlipedcell[c2 - 2]][currentFlipedcell[c2 - 1]] &&
+        (lastFlipedcell[c - 2] != currentFlipedcell[c2 - 2] || lastFlipedcell[c - 1] != currentFlipedcell[c2 - 1])) {
         // cellImageFoundrow.push(lastFlipedcell[c - 2]);
         // cellImageFoundcol.push(lastFlipedcell[c - 1]);
         // cellImageFoundrow.push(currentFlipedcell[c2 - 2]);
