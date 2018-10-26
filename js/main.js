@@ -29,10 +29,10 @@ for (let row = 0; row < rowsNumber; row++) {
     for (let col = 0; col < colsNumber; col++) {
         cellImage[row][col] = imageCollecton[count];
         // document.getElementById('c' + row + '' + col).style =
-        //     'background-image: url("./assest/' + cellImage[row][col] + '.png");';
+        //     'background-image: url("./assets/' + cellImage[row][col] + '.png");';
         //console.log('cg = ' + imageCollecton[count] + ' count = ' + count);
         document.getElementById('c' + row + '' + col).style =
-            'background-image: url("./assest/b.png");';
+            'background-image: url("./assets/b.png");';
         count += 2;
         //console.log('cellImage[' + row + '][' + col + '] = ' + cellImage[row][col]);
     }
@@ -44,7 +44,7 @@ function flipToBack() {
         for (let col = 0; col < colsNumber; col++) {
             if (!cellImageFound[row][col]) {
                 document.getElementById('c' + row + '' + col).style =
-                    'background-image: url("./assest/b.png");';
+                    'background-image: url("./assets/b.png");';
             }
         }
     }
@@ -96,7 +96,7 @@ function d(row, col) {
 
     }
     document.getElementById('c' + row + '' + col).style =
-        'background-image: url("./assest/' + cellImage[row][col] + '.png");';
+        'background-image: url("./assets/' + cellImage[row][col] + '.png");';
     twoFliped = !twoFliped;
     won = true;
     for (let row = 0; row < rowsNumber; row++) {
@@ -107,9 +107,9 @@ function d(row, col) {
     //console.log(cellImageFound);
     // console.log(won);
     if (won) {
-        // document.getElementById('main').innerHTML = '<div style="background-image: url(' + '\'./assest/IYE.gif\'' + ')"><h1>Congratulations</h1></div>';
+        // document.getElementById('main').innerHTML = '<div style="background-image: url(' + '\'./assets/IYE.gif\'' + ')"><h1>Congratulations</h1></div>';
         color = ["red", "blue", "yellow", "white", "green", "greenyellow", "orange", "gainsboro", "silver", "gold"];
-        document.getElementById('main').style = 'height:300px;width:600px;background-image: url(\'./assest/IYE.gif\');';
+        document.getElementById('main').style = 'height:300px;width:600px;background-image: url(\'./assets/IYE.gif\');';
         document.getElementById('main').classList = 'container';
         document.getElementById('main').innerHTML = '<br><br><br><br><br><br><br><br><h1 class="justify-content-md-center" id="congrats">Congratulations</h1>';
         setInterval(() => {
