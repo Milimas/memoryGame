@@ -1,17 +1,12 @@
 var rowsNumber;
 var colsNumber;
 // $('document').ready(onLoadGame(5, 4));
-<<<<<<< HEAD
-=======
-
->>>>>>> cc9677cddba97e79f2fb6fe57116948eb4112b9b
 var randomNumber1 = 0;
 var randomNumber2 = 0;
 var groupImages1 = [];
 var groupImages2 = [];
 var imageCollecton = [];
 
-<<<<<<< HEAD
 var images = [];
 for (let imageNumber = 0; imageNumber < (rowsNumber * colsNumber) / 2; imageNumber++) {
     image = new Image();
@@ -21,8 +16,6 @@ for (let imageNumber = 0; imageNumber < (rowsNumber * colsNumber) / 2; imageNumb
     document.getElementById('h' + imageNumber).style.display = 'none';
 }
 
-=======
->>>>>>> cc9677cddba97e79f2fb6fe57116948eb4112b9b
 function onLoadGame(onLoadRows, onLoadCols) {
     rowsNumber = onLoadRows;
     colsNumber = onLoadCols;
