@@ -9,7 +9,11 @@ function build(rows, cols) {
         document.write('            <tr class=\"row row justify-content-md-center\">\n');
         for (let j = 0; j < cols; j++) {
             document.write('                <td class=\"col-\" onclick=\"d(' + i + ',' + j + ')\" id=\"c' + i + '' + j + '\"></td>\n');
+<<<<<<< HEAD
             // console.log(i + '' + j + ' done!');
+=======
+            console.log(i + '' + j + ' done!');
+>>>>>>> cc9677cddba97e79f2fb6fe57116948eb4112b9b
         }
         document.write('            </tr>\n');
     }
