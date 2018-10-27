@@ -1,6 +1,9 @@
+.main {}
+
 .main table {
-    height: auto;
-    width: auto;
+    border: 3px black solid;
+    height: 495px;
+    width: 402px;
 }
 
 .main table tr td {

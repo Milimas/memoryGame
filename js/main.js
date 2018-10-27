@@ -1,26 +1,10 @@
-var rowsNumber;
-var colsNumber;
-// $('document').ready(onLoadGame(5, 4));
-var randomNumber1 = 0;
-var randomNumber2 = 0;
+var randomNumber1;
+var randomNumber2;
 var groupImages1 = [];
 var groupImages2 = [];
 var imageCollecton = [];
-
-var images = [];
-for (let imageNumber = 0; imageNumber < (rowsNumber * colsNumber) / 2; imageNumber++) {
-    image = new Image();
-    image.src = './assets/' + imageNumber + '.png';
-    images[imageNumber] = image.src;
-    document.write('<img id="h' + imageNumber + '" src="' + image.src + '"></img>');
-    document.getElementById('h' + imageNumber).style.display = 'none';
-}
-
-function onLoadGame(onLoadRows, onLoadCols) {
-    rowsNumber = onLoadRows;
-    colsNumber = onLoadCols;
-}
-
+var rowsNumber = 5;
+var colsNumber = 4;
 do {
     foundIt = false;
     randomNumber1 = Math.floor(Math.random() * Math.floor((rowsNumber * colsNumber) / 2));
@@ -34,12 +18,12 @@ do {
         groupImages2.push(randomNumber2);
     }
 } while (groupImages1.length < (rowsNumber * colsNumber) / 2 && groupImages2.length < (rowsNumber * colsNumber) / 2);
-imageCollecton = groupImages1.concat(groupImages2);
+imageCollecton = groupImages1 + ',' + groupImages2;
 var cellImage = new Array(rowsNumber);
 for (let row = 0; row < cellImage.length; row++) {
     cellImage[row] = new Array(colsNumber);
 }
-
+//console.log('cg : ' + imageCollecton);
 count = 0;
 for (let row = 0; row < rowsNumber; row++) {
     for (let col = 0; col < colsNumber; col++) {
@@ -49,7 +33,7 @@ for (let row = 0; row < rowsNumber; row++) {
         //console.log('cg = ' + imageCollecton[count] + ' count = ' + count);
         document.getElementById('c' + row + '' + col).style =
             'background-image: url("./assets/b.png");';
-        count += 1;
+        count += 2;
         //console.log('cellImage[' + row + '][' + col + '] = ' + cellImage[row][col]);
     }
 }
@@ -96,19 +80,19 @@ function d(row, col) {
     if (twoFliped) {
         lastFlipedcell[countFliped1] = row;
         lastFlipedcell[countFliped1 + 1] = col;
-        countFliped1 += 1;
+        countFliped1 += 2;
         flipToBack();
     } else {
         currentFlipedcell[countFliped2] = row;
         currentFlipedcell[countFliped2 + 1] = col;
-        countFliped2 += 1;
+        countFliped2 += 2;
     }
-    console.log(row + ' ' + col);
-    // console.log(currentFlipedcell[c2 - 1] + '' + currentFlipedcell[c2 ] + ' ' + lastFlipedcell[c - 1] + '' + lastFlipedcell[c ]);
-    if (!twoFliped && cellImage[lastFlipedcell[countFliped1 - 1]][lastFlipedcell[countFliped1]] == cellImage[currentFlipedcell[countFliped2 - 1]][currentFlipedcell[countFliped2]] &&
-        (lastFlipedcell[countFliped1 - 1] != currentFlipedcell[countFliped2 - 1] || lastFlipedcell[countFliped1] != currentFlipedcell[countFliped2])) {
-        cellImageFound[lastFlipedcell[countFliped1 - 1]][lastFlipedcell[countFliped1]] = true;
-        cellImageFound[currentFlipedcell[countFliped2 - 1]][currentFlipedcell[countFliped2]] = true;
+    //console.log(row + ' ' + col);
+    // console.log(currentFlipedcell[c2 - 2] + '' + currentFlipedcell[c2 - 1] + ' ' + lastFlipedcell[c - 2] + '' + lastFlipedcell[c - 1]);
+    if (!twoFliped && cellImage[lastFlipedcell[countFliped1 - 2]][lastFlipedcell[countFliped1 - 1]] == cellImage[currentFlipedcell[countFliped2 - 2]][currentFlipedcell[countFliped2 - 1]] &&
+        (lastFlipedcell[countFliped1 - 2] != currentFlipedcell[countFliped2 - 2] || lastFlipedcell[countFliped1 - 1] != currentFlipedcell[countFliped2 - 1])) {
+        cellImageFound[lastFlipedcell[countFliped1 - 2]][lastFlipedcell[countFliped1 - 1]] = true;
+        cellImageFound[currentFlipedcell[countFliped2 - 2]][currentFlipedcell[countFliped2 - 1]] = true;
 
     }
     document.getElementById('c' + row + '' + col).style =
@@ -120,19 +104,16 @@ function d(row, col) {
             if (!cellImageFound[row][col]) won = false;
         }
     }
-    console.log(cellImage[row][col]);
-    console.log('cg : ' + imageCollecton);
     //console.log(cellImageFound);
     // console.log(won);
     if (won) {
         // document.getElementById('main').innerHTML = '<div style="background-image: url(' + '\'./assets/IYE.gif\'' + ')"><h1>Congratulations</h1></div>';
         color = ["red", "blue", "yellow", "white", "green", "greenyellow", "orange", "gainsboro", "silver", "gold"];
-        document.getElementById('main').style = 'text-align:center;height:300px;width:600px;background-image: url(\'./assets/IYE.gif\');';
+        document.getElementById('main').style = 'height:300px;width:600px;background-image: url(\'./assets/IYE.gif\');';
         document.getElementById('main').classList = 'container';
         document.getElementById('main').innerHTML = '<br><br><br><br><br><br><br><br><h1 class="justify-content-md-center" id="congrats">Congratulations</h1>';
         setInterval(() => {
             document.getElementById('congrats').style = 'text-align: center;color: ' + color[Math.floor(Math.random() * (rowsNumber * colsNumber) / 2)] + ';'
         }, 250);
-        document.getElementById('main').innerHTML += '<button id="playAgain" class="btn btn-success justify-content-md-center" type="button" onclick="location.reload();">play again</button>';
     }
 }
